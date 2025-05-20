@@ -214,8 +214,8 @@ main {
 .Table img {
   max-width: 100%;
   height: auto;
-  display: block; /* 避免底部出现小空隙 */
-  border-radius: 8px; /* 可选：图片也圆润一点~ */
+  display: block; 
+  border-radius: 8px; 
 }
 
 /* Zurück-zum-Anfang Button */
