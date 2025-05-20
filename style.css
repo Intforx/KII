@@ -211,6 +211,13 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.Table img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* 避免底部出现小空隙 */
+  border-radius: 8px; /* 可选：图片也圆润一点~ */
+}
+
 /* Zurück-zum-Anfang Button */
 #backToTop {
   position: fixed;
