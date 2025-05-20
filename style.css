@@ -20,7 +20,7 @@ header {
 /* Navi */
 .nav {
   margin: 0 5%;
-  background: linear-gradient(to right, #f9d5ec, #dfe9f3);
+  background: linear-gradient(to right,#afdce3 ,#7dd7de);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border-radius: 12px;
   overflow: visible;
