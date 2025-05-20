@@ -9,10 +9,10 @@ header {
 }
 
 .header img {
-  width: 140px;
+  width: 100px;
   height: 80px;
   position: relative;
-  top: -20px;
+  top: -16px;
   margin-left: 20px;
   float: left;
 }
