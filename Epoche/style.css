@@ -1,0 +1,246 @@
+/* Kopfbereich (Header) */
+header {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.header {
+  height: 80px;
+}
+
+.header img {
+  width: 100px;
+  height: 80px;
+  position: relative;
+  top: -16px;
+  margin-left: 20px;
+  float: left;
+   margin-top: 10px;
+}
+
+/* Navi */
+.nav {
+  margin: 0 5%;
+  background: linear-gradient(to right,#afdce3 ,#7dd7de);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: visible;
+}
+
+
+.nav ul {
+  justify-content: flex-end; 
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.nav ul a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  display: inline-block;
+  padding: 0 20px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.nav ul li {
+  float: left;
+  position: relative;
+  margin-left: 30px;
+  background-color: transparent;
+  height: 60px;
+  line-height: 60px;
+}
+
+
+.nav ul li:hover a {
+  background: linear-gradient(to right, #b5e7f0, #6fd5da);
+  color: white;
+}
+
+.nav li .content {
+  visibility: hidden;       
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  min-width: 180px;
+  z-index: 99;
+}
+
+.nav ul li:hover .content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav li .content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block; 
+}
+
+.nav li .content ul li {
+  width: 100%;
+}
+
+.nav li .content ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.nav li .content ul li a:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* ☰ Button */
+.menu-button {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: linear-gradient(to right, #82dcdc, #71d7d7 );
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  z-index: 1001;
+  display: none;
+  cursor: pointer;
+}
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1002;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu a {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  color: black;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.overlay.active {
+  display: block;
+}
+
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  display: none;
+}
+
+
+/* Main */
+main {
+  margin: 0 10%;
+}
+
+.text {
+  margin-bottom: 50px;
+}
+
+.text h1 {
+  font-size: clamp(24px, 5vw, 36px);
+}
+
+.Table {
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.Table img {
+  width: 150px;     
+  height: auto;     
+  float: right;      
+  margin-left: 15px; 
+  border-radius: 8px;
+}
+
+/* Zurück-zum-Anfang Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  background-image: url('img/Rocket.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#backToTop:hover {
+  transform: scale(1.1);
+}
+#backToTop.hide {
+  opacity: 0;
+  pointer-events: none;
+}
