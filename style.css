@@ -212,10 +212,11 @@ main {
 }
 
 .Table img {
-  max-width: 100%;
-  height: auto;
-  display: block; 
-  border-radius: 8px; 
+  width: 150px;     
+  height: auto;     
+  float: right;      
+  margin-left: 15px; 
+  border-radius: 8px;
 }
 
 /* Zurück-zum-Anfang Button */
