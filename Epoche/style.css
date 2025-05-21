@@ -214,7 +214,7 @@ main {
 }
 
 .Table img {
-  width: 270px;     
+  width: auto;     
   height: auto;     
   float: right;      
   margin-left: 15px; 
