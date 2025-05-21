@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+  <title>About</title>
+</head>
+<style>
+.about-tables .Table {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1 1 500px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #e6f0ff;
+  border: 2px solid  #4ac9e2;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(72, 214, 209, 0.3);
+}
 
+.about-tables .Table img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  flex-shrink: 0;
+  border: 2px solid #4adae2;
+}
+
+.person-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.person-text ul li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.about-tables .Table {
+  margin-bottom: 30px; 
+}
+.top-left-icon {
+  width: 40px;       /* Größe des Icons */
+  height: 40px;
+  position: absolute; /* Damit es oben links bleibt */
+  top: 10px;
+  left: 10px;
+  z-index: 1000;     /* Damit es über anderen Elementen bleibt */
+}
+
+
+</style>
+<body>
+  <header id="navbar">
+    <!-- Hier kannst du deine Navigation wie auf der Hauptseite einfügen -->
+  </header>
+
+  <main>
+    <div class="text" style="text-align:center; margin-bottom: 40px;">
+      <h1>Über uns</h1>
+      <p>Hier stellen wir unser Team vor.</p>
+    </div>
+
+    <div class="about-tables">
+
+      <div class="Table">
+        <img src="../image/person1.jpg" alt="Person 1" />
+        <ul>
+          <li><strong>Anna Müller</strong></li>
+          <li>Kunsthistorikerin mit Fokus auf moderne Kunst.</li>
+          <li>Sie liebt es, komplexe Kunstwerke zu analysieren und zugänglich zu machen.</li>
+        </ul>
+      </div>
+
+      <div class="Table">
+        <img src="../image/person2.jpg" alt="Person 2" />
+        <ul>
+          <li><strong>Max Schmidt</strong></li>
+          <li>Programmierer und Entwickler des Chatbots.</li>
+          <li>Er sorgt dafür, dass alle Fragen rund um Kunst präzise beantwortet werden.</li>
+        </ul>
+      </div>
+
+      <div class="Table">
+        <img src="../image/person3.jpg" alt="Person 3" />
+        <ul>
+          <li><strong>Laura Becker</strong></li>
+          <li>Grafikdesignerin mit Leidenschaft für visuelle Kommunikation.</li>
+          <li>Sie gestaltet die Benutzeroberfläche und sorgt für ein angenehmes Nutzererlebnis.</li>
+        </ul>
+      </div>
+
+      <div class="Table">
+        <img src="../image/person4.jpg" alt="Person 4" />
+        <ul>
+          <li><strong>Jonas Fischer</strong></li>
+          <li>Content-Manager und Texter.</li>
+          <li>Er recherchiert und erstellt spannende Inhalte zu Kunst und Geschichte.</li>
+        </ul>
+      </div>
+
+    </div>
+    <header id="navbar">
+  <div class="header">
+    <a href="Haupt.html">
+      <img src="roboter.png" alt="Icon" class="top-left-icon">
+      
+    </a>
+    <!-- restlicher Header -->
+  </div>
+</header>
+  </main>
+</body>
+</html>
