@@ -9,9 +9,70 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="blocks">
-        <div class="block-1">
-		<img src="image/EpochenBilder/Kubismus.jpg" alt="Kubismus">
+
+<!-- Navigation -->
+<body>
+  <header id="navbar">
+  <div class="header">
+    <div class="nav">
+      <a href="Haupt.html"><img src="../image/roboter.png" alt="Icon"></a>
+      <ul>
+        <li><a href="Haupt.html">Startseite</a></li>
+
+        <li>
+          <a href="Epoche/Epoche.html">Epoche</a>
+          <div class="content">
+            <ul>
+              <li><a href="Epoche/Barock.html">Barock</a></li>
+              <li><a href="Epoche/Expressionismus.html">Expressionismus</a></li>
+              <li><a href="Epoche/Klassizismus.html">Klassizismus</a></li>
+              <li><a href="Epoche/Kubismus.html">Kubismus</a></li>
+              <li><a href="Epoche/Realismus.html">Realismus</a></li>
+       <li><a href="Epoche/Renaissance.html">Renaissance</a></li>
+       <li><a href="Epoche/Impressionismus.html">Impressionismus</a></li>
+       <li><a href="Epoche/Surrealismus.html">Surrealismus</a></li>
+              <li><a href="Epoche/WegbereiterDerModerne.html">WegbereiterDerModerne</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="Chatbox/Chatbox.html">Chatbox</a>
+        </li>
+
+        <li>
+          <a href="image/Hi !.png">Bild</a>
+          <div class="content">
+            <ul>
+              <li><a href="#">Bild generieren</a></li>
+              <li><a href="#">Bild zuordnen</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="About/About.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+  <!-- Menu Button -->
+  <button id="menuBtn" class="menu-button">☰</button>
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="side-menu">
+    <button id="closeBtn" class="close-button">❌</button>
+    <a href="">Startseite</a>
+    <a href="">Epoche</a>
+    <a href="">Chatbox</a>
+    <a href="">Bild</a>
+    <a href="">About</a>
+  </nav>
+ 	<div class="Table">
+		<img src="../image/EpochenBilder/Kubismus.jpg" alt="Kubismus">
 		<div class="text">
 		<h3>Kubismus</h3>
 		<p>
@@ -22,6 +83,73 @@
 		</p>
          	</div>
         </div>
-</div>
+ 
+	<!--  Button, der unten rechts erscheint und zurück nach oben scrollt -->
+    <button id="backToTop" title="Zurück nach oben">
+      <img src="../image/roboter.png" alt="Nach oben" style="width: 30px; height: 30px;">
+    </button>
+ <script>
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    // Beim Scrollen die Navigationsleiste und den Button steuern
+    window.addEventListener('scroll', function () {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        navbar.style.top = "-70px";
+        menuBtn.style.display = "block";
+      } else {
+        navbar.style.top = "0";
+        menuBtn.style.display = "none";
+        sideMenu.classList.remove("open");
+        overlay.classList.remove("active");
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+    // Menü ausklappen
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.add("open");
+      overlay.classList.add("active");
+    });
+    // Menü schließen
+    closeBtn.addEventListener('click', () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("active");
+    });
+    // Durch Klicken außerhalb das Menü schließen
+    overlay.addEventListener('click', () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("active");
+    });
+    //  Zugriff auf das Button-Element mit der ID „backToTop“
+  const backToTopBtn = document.getElementById("backToTop");
+  // Beim Scrollen prüfen, ob der Button sichtbar sein soll
+  window.addEventListener("scroll", () => {
+ // Wenn der Benutzer mehr als 100 Pixel nach unten gescrollt hat...
+    if (window.scrollY > 100) {
+      // ...zeige den Button an 
+      backToTopBtn.classList.remove("hide");
+    } else {
+      // ...verstecke den Button 
+      backToTopBtn.classList.add("hide");
+    }
+  });
+  //  Wenn man auf den Button klickt, sanft nach oben scrollen
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,                // Zielposition ganz oben
+      behavior: "smooth"     // Sanfte Scrollbewegung
+    });
+  });
+
+  </script>
+
+
+</body>
+</html>
+ 
 </body>
 </html>
