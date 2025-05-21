@@ -204,6 +204,8 @@ main {
 }
 
 .Table {
+  max-width: 800px;         
+  margin: 0 auto;           
   border: 2px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -212,7 +214,7 @@ main {
 }
 
 .Table img {
-  width: 150px;     
+  width: 300px;     
   height: auto;     
   float: right;      
   margin-left: 15px; 
