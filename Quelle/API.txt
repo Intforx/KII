@@ -1,0 +1,2 @@
+API KEY bs-943429ledjpeg-gruppe2
+URL https://lm3.hs-ansbach.de/worker2/v1
