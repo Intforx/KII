@@ -1,3 +1,4 @@
+// Elementreferenzen
 const chatInput = document.getElementById('chat-input');
 const chatWindow = document.getElementById('chat-window');
 const chatForm = document.getElementById('chat-form');
@@ -6,17 +7,19 @@ const chatList = document.getElementById('chat-list');
 const sendButton = document.getElementById('send-button');
 const overlayMenu = document.getElementById('overlay-menu');
 
+// Zustände
 let isLoggedIn = false;
 let username = "";
 let isGenerating = false;
 let generationTimeout;
 let conversations = [];
 
-// Auth UI Update
+// UI aktualisieren je nach Login-Status
 function updateAuthUI() {
   authStatus.textContent = isLoggedIn ? username : "Anmelden";
 }
 
+// Login-Logik beim Klicken auf Auth-Status
 authStatus.addEventListener('click', () => {
   if (!isLoggedIn) {
     const name = prompt("Vorname:");
@@ -26,6 +29,7 @@ authStatus.addEventListener('click', () => {
       email = prompt("Ungültige E-Mail. Bitte gib eine gültige Adresse ein:");
     }
 
+    // Passwortabfrage mit Overlay
     const wrapper = document.createElement('div');
     wrapper.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
     wrapper.innerHTML = `
@@ -40,6 +44,7 @@ authStatus.addEventListener('click', () => {
     `;
     document.body.appendChild(wrapper);
 
+    // Passwort anzeigen/verbergen
     document.getElementById('toggle-password').addEventListener('click', () => {
       const input = document.getElementById('password-field');
       const btn = document.getElementById('toggle-password');
@@ -47,6 +52,7 @@ authStatus.addEventListener('click', () => {
       btn.textContent = input.type === 'password' ? '👁️' : '🙈';
     });
 
+    // Login durchführen
     document.getElementById('submit-login').addEventListener('click', () => {
       const password = document.getElementById('password-field').value;
       if (!password) return alert("Bitte gib ein Passwort ein!");
@@ -58,12 +64,12 @@ authStatus.addEventListener('click', () => {
   }
 });
 
-// Overlay Toggle
+// Overlay-Sidebar ein-/ausblenden
 function toggleOverlay() {
   overlayMenu.classList.toggle('-translate-x-full');
 }
 
-// New Chat
+// Neues Gespräch starten
 function newChat() {
   const previousContent = chatWindow.innerHTML;
   if (previousContent.trim() !== '') {
@@ -78,6 +84,7 @@ function newChat() {
   item.className = 'p-2 rounded hover:bg-gray-200 cursor-pointer';
   item.dataset.index = index;
 
+  // Klick auf gespeichertes Gespräch
   item.addEventListener('click', () => {
     document.querySelectorAll('#chat-list > div').forEach(el => el.classList.remove('active-chat'));
     item.classList.add('active-chat');
@@ -89,7 +96,7 @@ function newChat() {
   item.classList.add('active-chat');
 }
 
-// Chat senden
+// Nachricht senden
 function sendMessage(e) {
   e.preventDefault();
   if (isGenerating) {
@@ -100,6 +107,7 @@ function sendMessage(e) {
   const text = chatInput.value.trim();
   if (!text) return;
 
+  // Nutzer-Blase anzeigen
   const userBubble = document.createElement('div');
   userBubble.className = 'flex justify-end';
   userBubble.innerHTML = `<div class="bg-blue-100 p-4 rounded-xl max-w-2xl shadow">${text}</div>`;
@@ -107,10 +115,11 @@ function sendMessage(e) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
   chatInput.value = '';
 
+  // Antwort generieren
   startGeneration();
 }
 
-// Bot Antwort generieren
+// Botantwort mit Animation simulieren
 function startGeneration() {
   isGenerating = true;
   sendButton.innerHTML = '◼️';
@@ -126,6 +135,7 @@ function startGeneration() {
     botBubble.appendChild(botContent);
     chatWindow.appendChild(botBubble);
 
+    // Zeichenweise Textanzeige
     let index = 0;
     const interval = setInterval(() => {
       if (index < botText.length) {
@@ -139,6 +149,7 @@ function startGeneration() {
   }, 500);
 }
 
+// Beende die Generierung
 function stopGeneration() {
   isGenerating = false;
   sendButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="white" viewBox="0 0 24 24" stroke="black">
@@ -146,12 +157,13 @@ function stopGeneration() {
   </svg>`;
 }
 
+// Generierung abbrechen
 function cancelGeneration() {
   clearTimeout(generationTimeout);
   stopGeneration();
 }
 
-// Werbung anzeigen für Gäste
+// Werbung für Gäste anzeigen
 function showAdPopup() {
   const popup = document.createElement('div');
   popup.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
@@ -165,10 +177,12 @@ function showAdPopup() {
   inner.appendChild(closeBtn);
   popup.appendChild(inner);
   document.body.appendChild(popup);
+
+  // Schließen erst nach 30 Sekunden möglich
   setTimeout(() => closeBtn.classList.remove('hidden'), 30000);
 }
 
-// Enter + Shift Verhalten
+// Enter + Shift Verhalten steuern
 chatInput.addEventListener('keydown', function(e) {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();
@@ -176,7 +190,7 @@ chatInput.addEventListener('keydown', function(e) {
   }
 });
 
-// Start
+// Initialisierung beim Laden
 window.onload = () => {
   newChat();
   updateAuthUI();

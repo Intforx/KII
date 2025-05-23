@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat App</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // Tailwind-Konfiguration mit benutzerdefinierten Farben
     tailwind.config = {
       theme: {
         extend: {
@@ -19,6 +21,7 @@
     };
   </script>
   <style>
+    /* Aktiver Chat wird hervorgehoben */
     .active-chat {
       background-color: #d1fae5 !important;
     }
@@ -26,44 +29,50 @@
 </head>
 <body class="bg-lightgray text-gray-900 h-screen overflow-hidden relative">
 
-  <!-- Hamburger Button -->
+  <!-- Hamburger-Menü-Button -->
   <button onclick="toggleOverlay()" class="fixed top-4 left-4 z-40 bg-white p-2 border rounded shadow">
     ☰
   </button>
 
-  <!-- Overlay Sidebar -->
+  <!-- Overlay-Menü (Sidebar) -->
   <div id="overlay-menu" style="padding-left: 3.5rem;" class="fixed top-0 left-0 w-64 h-full bg-white border-r border-gray-300 p-4 z-30 transform -translate-x-full transition-transform duration-300">
     <div class="text-xl font-semibold mb-4">Palette</div>
+    <!-- Button für neues Gespräch -->
     <button onclick="newChat()" class="text-left w-full bg-gray-100 border border-gray-300 rounded px-3 py-2 mb-4 hover:bg-gray-200 text-sm">
       + Neues Gespräch
     </button>
     <hr class="mb-2">
+    <!-- Liste der Chatverläufe -->
     <div id="chat-list" class="overflow-y-auto space-y-2 text-sm"></div>
+    <!-- Footer -->
     <div class="absolute bottom-4 text-xs text-gray-500">© 2025 Palette</div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Hauptinhalt -->
   <main class="flex flex-col h-full relative z-10 bg-white ml-0 transition-all duration-300" id="main-content">
-    <!-- Header -->
+    <!-- Header mit Login-Status -->
     <div class="absolute top-0 right-0 p-4 text-sm">
       <span id="auth-status" class="text-gray-600 cursor-pointer hover:underline">Anmelden</span>
     </div>
 
-    <!-- Chat Title -->
+    <!-- Chat-Titel -->
     <div class="w-full max-w-3xl mt-4 mx-auto">
       <h1 class="text-xl font-bold">Kunst-Chat</h1>
     </div>
 
-    <!-- Chat Window -->
+    <!-- Chatfenster -->
     <div class="w-full max-w-3xl flex-1 overflow-y-auto p-6 space-y-6 mt-4 rounded-xl bg-darkgray mx-auto" id="chat-window"></div>
 
-    <!-- Input Section -->
+    <!-- Eingabebereich -->
     <form id="chat-form" class="w-full max-w-3xl p-4 border-t border-gray-300 flex gap-3 items-end rounded-xl shadow-inner mb-4 bg-gray-100 mx-auto" onsubmit="sendMessage(event)">
+      <!-- Datei-Upload -->
       <label class="cursor-pointer inline-flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded hover:bg-gray-200">
         +
         <input type="file" class="hidden" id="file-input" />
       </label>
+      <!-- Texteingabe -->
       <textarea id="chat-input" rows="1" placeholder="Frag etwas über Kunst..." class="flex-1 resize-none border rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+      <!-- Senden-Button -->
       <button id="send-button" type="submit" class="bg-white p-2 rounded-lg border border-black">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="white" viewBox="0 0 24 24" stroke="black">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
@@ -72,6 +81,7 @@
     </form>
   </main>
 
+  <!-- Verknüpfung zur externen JS-Datei -->
   <script src="app.js"></script>
 </body>
 </html>
