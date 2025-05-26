@@ -113,41 +113,59 @@ function sendMessage(e) {
   userBubble.innerHTML = `<div class="bg-blue-100 p-4 rounded-xl max-w-2xl shadow">${text}</div>`;
   chatWindow.appendChild(userBubble);
   chatWindow.scrollTop = chatWindow.scrollHeight;
+
   chatInput.value = '';
 
-  // Antwort generieren
-  startGeneration();
+  // Schicke zu startGeneration
+  startGeneration(text);
 }
 
-// Botantwort mit Animation simulieren
-function startGeneration() {
+
+// ✅ Startet die Antwortgenerierung durch das Backend (RAG + GPT)
+function startGeneration(text) {
   isGenerating = true;
-  sendButton.innerHTML = '◼️';
+  sendButton.innerHTML = '◼️'; // Button zeigt Stopp-Symbol
 
-  if (!isLoggedIn) showAdPopup();
+  if (!isLoggedIn) showAdPopup(); // Gäste sehen Werbung
 
-  generationTimeout = setTimeout(() => {
-    const botBubble = document.createElement('div');
-    botBubble.className = 'flex';
-    const botText = "Das ist eine Beispielantwort über Kunstgeschichte.";
-    const botContent = document.createElement('div');
-    botContent.className = "bg-gray-200 p-4 rounded-xl max-w-2xl shadow whitespace-pre-wrap";
-    botBubble.appendChild(botContent);
-    chatWindow.appendChild(botBubble);
+  // 💬 Erstellt eine neue Chat-Bubble für die Bot-Antwort
+  const botBubble = document.createElement('div');
+  botBubble.className = 'flex';
+  const botContent = document.createElement('div');
+  botContent.className = "bg-gray-200 p-4 rounded-xl max-w-2xl shadow whitespace-pre-wrap";
+  botBubble.appendChild(botContent);
+  chatWindow.appendChild(botBubble);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 
-    // Zeichenweise Textanzeige
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < botText.length) {
-        botContent.textContent += botText[index++];
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-      } else {
-        clearInterval(interval);
-        stopGeneration();
-      }
-    }, 30);
-  }, 500);
+  // 🔗 Anfrage an dein lokales KI-Backend senden
+  fetch("http://localhost:5000/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question: text }) // Nutzereingabe senden
+  })
+    .then(res => res.json())
+    .then(data => {
+      const botText = data.answer; // Antwort vom Server
+
+      // 🎬 Buchstabenweise Darstellung wie "Tippen"
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index < botText.length) {
+          botContent.textContent += botText[index++];
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+        } else {
+          clearInterval(interval);
+          stopGeneration(); // Stopp-Symbol zurück zu Pfeil
+        }
+      }, 30); // Schreibgeschwindigkeit in ms
+    })
+    .catch(err => {
+      console.error("❌ Fehler beim Abrufen der Antwort:", err);
+      botContent.textContent = "Entschuldigung, die Antwort konnte nicht generiert werden.";
+      stopGeneration();
+    });
 }
+
 
 // Beende die Generierung
 function stopGeneration() {
