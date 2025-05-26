@@ -206,13 +206,14 @@ main {
 .Table {
   border: 2px solid #ccc;
   padding: 20px;
+  height: auto;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .Table img {
-  width: 150px;     
+  width: 110px;     
   height: auto;     
   float: right;      
   margin-left: 15px; 
