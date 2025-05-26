@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Kunst-Epochen-Analysierer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>🖼️ Kunst-Epochen-Analysierer</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Bild analysieren</button>
+    </form>
+
+    {% if caption %}
+        <h2>📄 Bildbeschreibung</h2>
+        <p>{{ caption }}</p>
+        <h2>🎨 Zugeordnete Kunstepoche</h2>
+        <p><strong>{{ epoche }}</strong></p>
+    {% endif %}
+</body>
+</html>
