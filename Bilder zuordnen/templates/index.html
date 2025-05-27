@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Kunst-Epochen-Analysierer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset & Basis */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #0d47a1; /* dunkelblauer Text */
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #1565c0;
+            user-select: none;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+        }
+        form {
+            background: #f0f7ffcc; /* hellblau mit Transparenz */
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(21, 101, 192, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 320px;
+            max-width: 90vw;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        input[type="file"] {
+            border: 2px dashed #1565c0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: border-color 0.3s ease;
+            background: #ffffffee;
+            color: #0d47a1;
+            font-weight: 500;
+        }
+        input[type="file"]:hover {
+            border-color: #0d47a1;
+        }
+        button {
+            background-color: #1565c0;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0d47a1;
+        }
+        h2 {
+            color: #1565c0;
+            margin-bottom: 0.3rem;
+            user-select: none;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+        }
+        p {
+            background: #e3f2fdcc;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(21, 101, 192, 0.15);
+            max-width: 600px;
+            word-wrap: break-word;
+            color: #0d47a1;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        strong {
+            color: #0d47a1;
+        }
+ 
+        @media (max-width: 400px) {
+            form {
+                width: 90vw;
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Kunst-Epochen-Analysierer</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data" novalidate>
+        <input type="file" name="file" accept="image/*" required />
+        <button type="submit">Bild analysieren</button>
+    </form>
+  {% if caption %}
+        <h2>Bildbeschreibung</h2>
+        <p>{{ caption }}</p>
+
+        <h2>Zuordnung basierend auf Beschreibung</h2>
+        <p><strong>Epoche:</strong> {{ epoche_caption }}</p>
+        <p><strong>Begründung:</strong> {{ gpt_antwort_caption }}</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+ 
