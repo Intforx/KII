@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI Bildgenerator</title>
+  <style>
+    /* Grundlayout */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+       background-image: url('bild.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+    
+
+
+    h1 {
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: #0a3d62; /* dunkles Blau für Titel */
+    }
+
+    /* Eingabefeld */
+    input#prompt {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      border: 2px solid #a3cef1; /* hellblauer Rand */
+      margin-bottom: 20px;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(163, 206, 241, 0.5);
+      transition: border-color 0.3s ease;
+    }
+    input#prompt:focus {
+      border-color: #4a90e2; /* intensiveres Blau beim Fokus */
+      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.6);
+    }
+
+    /* Button */
+    button {
+      background-color: #4a90e2; /* hellblau */
+      border: none;
+      padding: 15px 40px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background-color: #357ABD; /* dunkleres Blau beim Hover */
+      box-shadow: 0 6px 14px rgba(53, 122, 189, 0.6);
+    }
+    button:disabled {
+      background-color: #a3cef1;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Bildanzeige */
+    #result {
+      margin-top: 30px;
+      min-height: 320px;
+      position: relative;
+    }
+    #result img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(74, 144, 226, 0.6);
+      border: 3px solid #a3cef1;
+    }
+
+    /* Ladeanimation */
+    .loader {
+      border: 6px solid #f3f3f3; /* Hellgrau */
+      border-top: 6px solid #4a90e2; /* Hellblau */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 50px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      body {
+        margin: 20px;
+        padding: 15px;
+      }
+      button, input#prompt {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bild mit Text erzeugen</h1>
+  <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;"></div>
+  <input id="prompt" type="text" placeholder="Deine beschreibung" />
+  <button id="generateBtn">Generieren</button>
+
+  <div id="result"></div>
+  <div style="position: absolute; top: 10px; left: 10px;">
+    <img src="{{ url_for('static', filename='roboter.png') }}" alt="Logo" style="height: 50px; width: 50px;" />
+  </div>
+ 
+ 
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+
+</body>
+</html>
+
