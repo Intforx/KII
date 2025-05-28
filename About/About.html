@@ -8,6 +8,26 @@
   <title>About</title>
 </head>
 <style>
+  body { 
+    margin: 0;
+      font-family: Arial, sans-serif;
+
+  }
+   .top-left-icon {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+    .about-tables {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
 .about-tables .Table {
   display: flex;
   align-items: center;
@@ -40,9 +60,10 @@
   font-size: 16px;
 }
 
-.about-tables .Table {
-  margin-bottom: 30px; 
-}
+  .text {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 .top-left-icon {
   width: 60px;       /* Größe des Icons */
   height: 60px;
@@ -107,7 +128,7 @@
     <header id="navbar">
   <div class="header">
     <a href="Haupt.html">
-      <img src="image/roboter.png" alt="Icon" class="top-left-icon">
+      <img src="roboter.png" alt="Icon" class="top-left-icon">
       
     </a>
     <!-- restlicher Header -->
